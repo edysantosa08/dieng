@@ -40,23 +40,37 @@ $(document).on("pageshow", "#page1", function(){
         okedeh=1;
     } else {
         window.localStorage.setItem("firstlaunch", "0");
-$.getJSON("obyekwisata.json",
-        function(data){
+$.ajax({
+    url: 'http://panduanwisatadieng.com/?json=get_recent_posts&post_type=wisata&count=30',
+    dataType: 'JSONP',
+    success: function(data, status) {
         var localData = JSON.stringify(data);
-        window.localStorage.setItem('obyekwisata', localData);}  );
+        window.localStorage.setItem('obyekwisata', localData);
+        okedeh=1;
+    },error: function() {
+       okedeh=0;
+    }
+});
 
-$.getJSON("hotel.json",
-        function(hdata){
+$.ajax({
+    url: 'http://panduanwisatadieng.com/?json=get_recent_posts&post_type=hotel&count=30',
+    dataType: 'JSONP',
+    success: function(hdata, status) {
         var datahotel = JSON.stringify(hdata);
         window.localStorage.setItem('hotel', datahotel);
-    });
-  okedeh=1;
+        okedeh=1;
+    },error: function() {
+       okedeh=0;
+    }
+});
+
+
     }
 if(okedeh==1){
 var menutama="";
 menutama += "<ul><li><a href='wisata.htm'><span class='font200 lnr lnr-map-marker'><\/span><br><span class='font80 fbold'>Obyek Wisata<\/span><\/a><\/li>";
-menutama += "<li><a onclick='clearLocalStorage()' class='curpon'><span class='font200 lnr lnr-briefcase'><\/span><br><span class='font80 fbold'>Tour Package<\/span><\/a><\/li>";
-menutama += "<li><a href='hotel.htm'><span class='font200 lnr lnr-apartment'><\/span><br><span class='font80 fbold'>Hotel \/ Penginapan<\/span><\/a><\/li><\/ul>";
+menutama += "<li><a onclick='clearLocalStorage()' class='curpon'><span class='font200 lnr lnr-briefcase'><\/span><br><span class='font80 fbold'>Paket Tour<\/span><\/a><\/li>";
+menutama += "<li><a href='hotel.htm'><span class='font200 lnr lnr-apartment'><\/span><br><span class='font80 fbold'>Penginapan<\/span><\/a><\/li><\/ul>";
  $('#menutama').html(menutama);
 
 }
