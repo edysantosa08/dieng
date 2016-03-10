@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Wisata Dieng</title>
+	<script src="themes/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script src="themes/jquery.mobile-1.4.5.min.js"></script>
+
+<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<!-- RIGHT -->
+
+<div data-role="page" id="page1">
+<div  data-role='main'>
+
+<div  class='pad10 text-center bwhite'  >
+<div class='text-center pad10'>
+<img src="dieng.png" alt="From Dieng With Love" style='margin:100px auto 60px;width:150px'/>
+
+<div class='nolist font90  fontn frontline text-center centerdiv'  id="deviceready" >
+<div class="event listening fgrey blink">...Menghubungkan ke Dieng APP..</div>
+<div class="event received fyellow"><ul>
+<li><a href="#obyekwisata"><span class="font200 lnr lnr-map-marker"></span><br><span class="font80 fbold">Obyek Wisata</span></a></li>
+<li><a onclick='clearLocalStorage()' class='curpon'><span class="font200 lnr lnr-briefcase"></span><br><span class="font80 fbold">Tour Package</span></a></li>
+<li><a href="#hotel"><span class="font200 lnr lnr-apartment"></span><br><span class="font80 fbold">Hotel / Penginapan</span></a></li></ul></div>
+</div>
+</div>
+
+
+</div>
+</div>
+ <div  class='bwhite font80 text-center width100' style='border:0;position:absolute;bottom:0'>
+    <div class='pad20 text-center'><p class='font80 fgrey'>Design and Developed by Edd 2015-2016</p></div>
+  </div>
+</div>
+<div data-role="page" id="obyekwisata">
+  <div id='header' class='fwhite text-center'>
+  <a  data-rel='back' class='fwhite curpon mfloleft lnr lnr-arrow-left font200 mrg5'></a>
+
+    <a href='#mypanel' class='fwhite curpon mfloright lnr lnr-menu font200 mrg5'></a>
+  </div>
+<div class='pad20 bgyellow fwhite'>
+<h1 class='font120 fontn mrg5 text-center'>Obyek Wisata Dieng</h1>
+<p>Jelajahi Aneka Ragam Tempat-tempat menarik di Dieng. Lihat ulasan,Info letak lokasi, Harga Tiket,  serta foto-foto terkini yang di upload para wisatawan via Instagram.</p>
+</div>
+  <div id='data' data-role="main" class='posrelhid'>
+  </div>
+
+ <div data-role="footer" data-position="fixed" class='bwhite font80 text-center width100' style='border:0;'>
+    <div class='pad20 text-center'><p class='font80 fgrey'>Design and Developed by Edd 2015-2016</p></div>
+  </div>
+</div>
+
+<div data-role="page" id="hotel">
+  <div id='header' class='fwhite text-center'>
+  <a  data-rel='back' class='fwhite curpon mfloleft lnr lnr-arrow-left font200 mrg5'></a>
+    <a href='#mypanel' class='fwhite curpon mfloright lnr lnr-menu font200 mrg5'></a>
+  </div>
+<div class='pad20 bgyellow fwhite'>
+<h1 class='font120 fontn mrg5 text-center'>Hotel dan Penginapan Dieng</h1>
+<p>Daftar Homestay, Penginapan, Hotel di Dieng, Dekat Sikunir, serta Wonosobo dengan keterangan fasilitas untuk memudahkan pengunjung mencari Penginapan yang sesuai saat berlibur ke Dieng.</p>
+</div>
+  <div id='datahotel' data-role="main" class='posrelhid'>
+  </div>
+
+ <div data-role="footer" data-position="fixed" class='bwhite font80 text-center width100' style='border:0;'>
+    <div class='pad20 text-center'><p class='font80 fgrey'>Design and Developed by Edd 2015-2016</p></div>
+  </div>
+</div>
+        <script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>
