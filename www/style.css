@@ -783,6 +783,7 @@ img {vertical-align:middle;text-align:center}
     -webkit-animation:fade 3000ms infinite;
 }
 .received {display:none}
+.absbot[position:absolute;bottom:3px]
 .diengload{background:#eee url('diengload.gif')no-repeat center center; background-size:30px 30px;min-height:250px;width:100%}
 .topfix{position:fixed;top:0;width:100%;z-index:998}
 #header{border:0!important;font-size:inherit!important;background:transparent!important;position:fixed;top:0px;width:100%;z-index:999}

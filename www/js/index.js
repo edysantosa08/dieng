@@ -30,6 +30,11 @@ var app = {
     }
 };
 
+function exitFromApp()
+             {
+                navigator.app.exitApp();
+ }
+
        $(document).one("mobileinit", function () {
 
             // Setting #container div as a jqm pageContainer
@@ -84,8 +89,8 @@ panel +="   <li><a href=''><span class='font100 lnr lnr-briefcase'><\/span><span
 panel +="   <li><a href='hotel.htm'><span class='font100 lnr lnr-apartment'><\/span><span class='font80'>Hotel \/ Penginapan<\/span><\/a><\/li>";
 panel +="   <li><a href=''><span class='font100 lnr lnr-question-circle'><\/span><span class='font80'>FAQ<\/span><\/a><\/li>";
 panel +="   <li><a href=''><span class='font100 lnr lnr-users'><\/span><span class='font80'>Tentang Kami<\/span><\/a><\/li>";
-panel +="   <li><a onclick='Javascript:clearStorage()' class='curpon'><span class='font100 lnr lnr-warning'><\/span><span class='font80'>Syarat dan Ketentuan<\/span><\/a><\/li><\/ul>";
-
+panel +="   <li><a onclick='clearLocalStorage()' class='curpon'><span class='font100 lnr lnr-warning'><\/span><span class='font80'>Syarat dan Ketentuan<\/span><\/a><\/li>";
+panel +="   <li><a onclick='exitFromApp()' class='curpon'><span class='font100 lnr lnr-cross'><\/span><span class='font80'>keluar<\/span><\/a><\/li><\/ul>";
 panel +="<\/div><\/div>";
   $.mobile.pageContainer.prepend(panel);
   $("#mypanel").panel();
@@ -125,13 +130,13 @@ pagewrap += "<div id='header' class='fwhite text-center'>";
 pagewrap += "<a  data-rel='back' class='fwhite curpon mfloleft lnr lnr-arrow-left font200 mrg5'><\/a>";
 pagewrap += "<a href='#mypanel' class='fwhite curpon mfloright lnr lnr-menu font200 mrg5'><\/a><\/div>";
 pagewrap += "<div data-role='main' class='pad0'>";
-pagewrap += "<div class='img_wrapper'>";
-pagewrap += "<img src='"+thumb+"'\/>";
-pagewrap += "<\/div>";
+pagewrap += "<div class='img_wrapper posrelhid'>";
+pagewrap += "<img src='"+thumb+"'\/><div class='absbot'>";
+pagewrap += "<a onclick=\"window.plugins.socialsharing.share('"+excerpt+"', '"+title+"', '"+thumb+"', '')\" class='pad10 font120 floleft fyellow lnr lnr-location' ><\/a>";
+pagewrap += "<a  class='pad10 font120 floright fyellow lnr lnr-picture' ><\/a>";
+pagewrap += "<\/div><\/div>";
 pagewrap += "<div class='pad10 font80 fgrey'><h1 class='judul dinblock font120 fontn'>"+title+"<\/h1><p>"+content+"</p><\/div>";
 pagewrap += "<br\/><br\/><br\/><\/div>";
-pagewrap += " <div data-role=\"footer\" data-position=\"fixed\" class='bwhite font80 text-center width100' style='border:0;'>";
-pagewrap += "<a onclick=\"window.plugins.socialsharing.share('"+excerpt+"', '"+title+"', '"+thumb+"', '')\" class='pad10 font120 floleft bdnone fyellow lnr lnr-location' ><\/a><\/div>";
 pagewrap += "<\/div>";
 
 $('#data').append(poswrap);
