@@ -34,7 +34,7 @@ function clearLocalStorage(){
 localStorage.clear();
 }
 
-$(document).on("pageshow", "#page1", function(){
+$(function() {
 function testpertama(){
     var fl = window.localStorage.getItem("firstlaunch");
     if (fl && parseInt(fl) == 0){
@@ -47,7 +47,6 @@ $.ajax({
     success: function(data, status) {
         var localData = JSON.stringify(data);
         window.localStorage.setItem('obyekwisata', localData);
-        okedeh=1;
     },error: function() {  }
 });
 
@@ -61,15 +60,14 @@ $.ajax({
     },error: function() { }
 });
 return 1; }}
-if(testpertama()==1){
-var menutama="";
-menutama += "<ul><li><a href='wisata.htm'><span class='font200 lnr lnr-map-marker'><\/span><br><span class='font80 fbold'>Obyek Wisata<\/span><\/a><\/li>";
-menutama += "<li><a onclick='clearLocalStorage()' class='curpon'><span class='font200 lnr lnr-briefcase'><\/span><br><span class='font80 fbold'>Paket Tour<\/span><\/a><\/li>";
-menutama += "<li><a href='hotel.htm'><span class='font200 lnr lnr-apartment'><\/span><br><span class='font80 fbold'>Penginapan<\/span><\/a><\/li><\/ul>";
- $('#menutama').html(menutama);
- $('.listening').hide(); $('.received').show();
-}
+setTimeout(hideSplash, 5000);
 });
+
+function hideSplash() {
+  $.mobile.changePage("#page1", "fade");
+}
+
+
 
 $(document).one('pagebeforecreate', function () {
 var panel ="";

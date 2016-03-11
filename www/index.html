@@ -13,6 +13,20 @@
 
 <body>
 <!-- RIGHT -->
+<div data-role="page"  id="splash" class="bgyellow">
+    <div class="splash">
+<div  class='pad10 text-center'  >
+<div class='text-center pad10'>
+<img src="icon.png" alt="From Dieng With Love" style='margin:100px auto 60px;width:150px'/>
+<div id="deviceready" class='font80'>
+<div class="event listening fwhite blink">...Mempersiapkan Dieng on APP..</div>
+<div class='event received blink fwhite font90'>..From Dieng With Love..</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
 
 <div data-role="page" id="page1">
 <div  data-role='main'>
@@ -21,9 +35,15 @@
 <div class='text-center pad10'>
 <img src="icon.png" alt="From Dieng With Love" style='margin:100px auto 60px;width:150px'/>
 
-<div class='nolist font90  fontn frontline text-center centerdiv'  id="deviceready" >
-<div class="event listening fgrey blink">...Mempersiapkan Dieng on APP..</div>
-<div class="event received fyellow" id='menutama'><span class='blink'>.. Mohon Sabar Menunggu ..</span></div>
+<div class='nolist font80  fontn frontline text-center centerdiv'   >
+<div class="fyellow" id='menutama'>
+<ul><li><a href="wisata.htm"><span class="font200 lnr lnr-map-marker"></span><br><span class="font80 fbold">Nglayap</span></a></li>
+<li><a onclick="clearLocalStorage()" class="curpon"><span class="font200 lnr lnr-dinner"></span><br><span class="font80 fbold">Makan</span></a></li>
+<li><a href="hotel.htm"><span class="font200 lnr lnr-apartment"></span><br><span class="font80 fbold">Tidur</span></a></li>
+<li><a onclick="clearLocalStorage()" class="curpon"><span class="font200 lnr lnr-briefcase"></span><br><span class="font80 fbold">Blanja</span></a></li>
+</ul>
+
+</div>
 </div>
 </div>
 
