@@ -130,6 +130,8 @@ pagewrap += "<img src='"+thumb+"'\/>";
 pagewrap += "<\/div>";
 pagewrap += "<div class='pad10 font80 fgrey'><h1 class='judul dinblock font120 fontn'>"+title+"<\/h1><p>"+content+"</p><\/div>";
 pagewrap += "<br\/><br\/><br\/><\/div>";
+pagewrap += " <div data-role=\"footer\" data-position=\"fixed\" class='bwhite font80 text-center width100' style='border:0;'>";
+pagewrap += "<a onclick=\"window.plugins.socialsharing.share('"+excerpt+"', '"+title+"', '"+thumb+"', '')\" class='pad10 font120 floleft bdnone fyellow lnr lnr-location' ><\/a><\/div>";
 pagewrap += "<\/div>";
 
 $('#data').append(poswrap);
