@@ -72,11 +72,19 @@ $.ajax({
 });
  }
 
-
 $(function() {
-setTimeout(hideSplash, 5000);
+    $(document).on("click", ".sound-click", function() {
+        cordova.exec(function () { },
+                    function () { },
+                    "SoundEffects",
+                    "click",
+                    []);
+    });
 });
 
+$(function() {
+setTimeout(hideSplash, 6000);
+});
 function hideSplash() {
 $.mobile.changePage("#page1", "fade");
 }
@@ -85,12 +93,12 @@ $(document).one('pagebeforecreate', function () {
 var panel ="";
 panel +="<div data-role='panel' id='mypanel' data-position='right' data-display='overlay' class='bwhite  pad0'><div class='bgyellow pad20 text-right fwhite'><a class='dinblock font120 lnr lnr-cross fwhite'  data-rel='close'><\/a></div>";
 panel +="<div class='nolist fontn fyellow'><ul><li><a href='wisata.htm'><span class='font100 lnr lnr-map-marker'><\/span><span class='font80'>Obyek Wisata<\/span><\/a><\/li>";
-panel +="   <li><a href=''><span class='font100 lnr lnr-briefcase'><\/span><span class='font80'>Tour Package<\/span><\/a><\/li>";
-panel +="   <li><a href='hotel.htm'><span class='font100 lnr lnr-apartment'><\/span><span class='font80'>Hotel \/ Penginapan<\/span><\/a><\/li>";
-panel +="   <li><a href=''><span class='font100 lnr lnr-question-circle'><\/span><span class='font80'>FAQ<\/span><\/a><\/li>";
-panel +="   <li><a href=''><span class='font100 lnr lnr-users'><\/span><span class='font80'>Tentang Kami<\/span><\/a><\/li>";
-panel +="   <li><a onclick='clearLocalStorage()' class='curpon'><span class='font100 lnr lnr-warning'><\/span><span class='font80'>Syarat dan Ketentuan<\/span><\/a><\/li>";
-panel +="   <li><a onclick='exitFromApp()' class='curpon'><span class='font100 lnr lnr-cross'><\/span><span class='font80'>keluar<\/span><\/a><\/li><\/ul>";
+panel +="   <li><a href=''  class='sound-click'><span class='font100 lnr lnr-briefcase'><\/span><span class='font80'>Tour Package<\/span><\/a><\/li>";
+panel +="   <li><a href='hotel.htm' class='sound-click'><span class='font100 lnr lnr-apartment'><\/span><span class='font80'>Hotel \/ Penginapan<\/span><\/a><\/li>";
+panel +="   <li><a href='' class='sound-click'><span class='font100 lnr lnr-question-circle'><\/span><span class='font80'>FAQ<\/span><\/a><\/li>";
+panel +="   <li><a href='' class='sound-click'><span class='font100 lnr lnr-users'><\/span><span class='font80'>Tentang Kami<\/span><\/a><\/li>";
+panel +="   <li><a onclick='clearLocalStorage()' class='curpon sound-click'><span class='font100 lnr lnr-warning'><\/span><span class='font80'>Syarat dan Ketentuan<\/span><\/a><\/li>";
+panel +="   <li><a onclick='exitFromApp()' class='curpon sound-click'><span class='font100 lnr lnr-cross'><\/span><span class='font80'>keluar<\/span><\/a><\/li><\/ul>";
 panel +="<\/div><\/div>";
   $.mobile.pageContainer.prepend(panel);
   $("#mypanel").panel();
@@ -131,7 +139,7 @@ pagewrap += "<a  data-rel='back' class='fwhite curpon mfloleft lnr lnr-arrow-lef
 pagewrap += "<a href='#mypanel' class='fwhite curpon mfloright lnr lnr-menu font200 mrg5'><\/a><\/div>";
 pagewrap += "<div data-role='main' class='pad0'>";
 pagewrap += "<div class='img_wrapper posrelhid'>";
-pagewrap += "<img src='"+thumb+"'\/><div class='absbot'>";
+pagewrap += "<div class='diengload'><img src='"+thumb+"'\/><\/div><div class='absbot'>";
 pagewrap += "<a onclick=\"window.plugins.socialsharing.share('"+excerpt+"', '"+title+"', '"+thumb+"', '')\" class='pad10 font120 floleft fyellow lnr lnr-location' ><\/a>";
 pagewrap += "<a  class='pad10 font120 floright fyellow lnr lnr-picture' ><\/a>";
 pagewrap += "<\/div><\/div>";
