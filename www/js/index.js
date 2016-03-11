@@ -34,13 +34,9 @@ function clearLocalStorage(){
 localStorage.clear();
 }
 
-$(function() {
-function testpertama(){
-    var fl = window.localStorage.getItem("firstlaunch");
-    if (fl && parseInt(fl) == 0){
-       return 1;
-    } else {
-        window.localStorage.setItem("firstlaunch", "0");
+var fl = window.localStorage.getItem("firstlaunch");
+if (fl && parseInt(fl) == 0){    } else {
+window.localStorage.setItem("firstlaunch", "0");
 $.ajax({
     url: 'http://panduanwisatadieng.com/?json=get_recent_posts&post_type=wisata&count=30',
     dataType: 'JSONP',
@@ -59,15 +55,16 @@ $.ajax({
         okedeh=1;
     },error: function() { }
 });
-return 1; }}
+ }
+
+
+$(function() {
 setTimeout(hideSplash, 5000);
 });
 
 function hideSplash() {
-  $.mobile.changePage("#page1", "fade");
+$.mobile.changePage("#page1", "fade");
 }
-
-
 
 $(document).one('pagebeforecreate', function () {
 var panel ="";
