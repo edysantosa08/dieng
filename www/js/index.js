@@ -30,6 +30,16 @@ var app = {
     }
 };
 
+       $(document).one("mobileinit", function () {
+
+            // Setting #container div as a jqm pageContainer
+            $.mobile.pageContainer = $('#container');
+
+            // Setting default page transition to slide
+            $.mobile.defaultPageTransition = 'none';
+
+        });
+
 function clearLocalStorage(){
 localStorage.clear();
 }
