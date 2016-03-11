@@ -1,12 +1,12 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.infodieng.app" version="1.0.0">
   <name>Dieng on App</name>
-  <description>Hello World sample application that responds to the deviceready event.</description>
-  <author href="http://phonegap.com" email="support@phonegap.com">PhoneGap Team</author>
+  <description>Dari Dieng Dengan Cinta.</description>
+  <author href="http://daridiengdengancinta.com" email="dddc@gmail.com">Dieng On app</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
   <preference name="target-device" value="universal"/>
-  <preference name="fullscreen" value="true"/>
+  <preference name="fullscreen" value="false"/>
   <preference name="webviewbounce" value="true"/>
   <preference name="prerendered-icon" value="true"/>
   <preference name="stay-in-webview" value="false"/>
