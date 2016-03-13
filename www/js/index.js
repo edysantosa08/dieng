@@ -8,7 +8,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+    document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
@@ -25,70 +25,14 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+        console.log('Received Event: ' + id); hideSplash();
     }
 };
 
-function exitFromApp()
-             {
-                navigator.app.exitApp();
- }
 
-       $(document).one("mobileinit", function () {
-
-            // Setting #container div as a jqm pageContainer
-            $.mobile.pageContainer = $('#container');
-
-            // Setting default page transition to slide
-            $.mobile.defaultPageTransition = 'none';
-
-        });
-
-function clearLocalStorage(){
-localStorage.clear();
-}
-
-var fl = window.localStorage.getItem("firstlaunch");
-if (fl && parseInt(fl) == 0){    } else {
-window.localStorage.setItem("firstlaunch", "0");
-$.ajax({
-    url: 'http://panduanwisatadieng.com/?json=get_recent_posts&post_type=wisata&count=30',
-    dataType: 'JSONP',
-    success: function(data, status) {
-        var localData = JSON.stringify(data);
-        window.localStorage.setItem('obyekwisata', localData);
-    },error: function() {  }
-});
-
-$.ajax({
-    url: 'http://panduanwisatadieng.com/?json=get_recent_posts&post_type=hotel&count=30',
-    dataType: 'JSONP',
-    success: function(hdata, status) {
-        var datahotel = JSON.stringify(hdata);
-        window.localStorage.setItem('hotel', datahotel);
-        okedeh=1;
-    },error: function() { }
-});
- }
-
-$(function() {
-    $(document).on("click", ".sound-click", function() {
-        cordova.exec(function () { },
-                    function () { },
-                    "SoundEffects",
-                    "click",
-                    []);
-    });
-});
-
-$(function() {
-setTimeout(hideSplash, 6000);
-});
-function hideSplash() {
-$.mobile.changePage("#page1", "fade");
-}
-
+function hideSplash() {$.mobile.changePage("#page1", "fade");}
+function exitFromApp() {navigator.app.exitApp(); }
+function clearLocalStorage(){localStorage.clear();}
 $(document).one('pagebeforecreate', function () {
 var panel ="";
 panel +="<div data-role='panel' id='mypanel' data-position='right' data-display='overlay' class='bwhite  pad0'><div class='bgyellow pad20 text-right fwhite'><a class='dinblock font120 lnr lnr-cross fwhite'  data-rel='close'><\/a></div>";
@@ -97,7 +41,7 @@ panel +="   <li><a href=''  class='sound-click'><span class='font100 lnr lnr-bri
 panel +="   <li><a href='hotel.htm' class='sound-click'><span class='font100 lnr lnr-apartment'><\/span><span class='font80'>Hotel \/ Penginapan<\/span><\/a><\/li>";
 panel +="   <li><a href='' class='sound-click'><span class='font100 lnr lnr-question-circle'><\/span><span class='font80'>FAQ<\/span><\/a><\/li>";
 panel +="   <li><a href='' class='sound-click'><span class='font100 lnr lnr-users'><\/span><span class='font80'>Tentang Kami<\/span><\/a><\/li>";
-panel +="   <li><a onclick='clearLocalStorage()' class='curpon sound-click'><span class='font100 lnr lnr-warning'><\/span><span class='font80'>Syarat dan Ketentuan<\/span><\/a><\/li>";
+panel +="   <li><a class='curpon sound-click'><span class='font100 lnr lnr-warning'><\/span><span class='font80'>Syarat dan Ketentuan<\/span><\/a><\/li>";
 panel +="   <li><a onclick='exitFromApp()' class='curpon sound-click'><span class='font100 lnr lnr-cross'><\/span><span class='font80'>keluar<\/span><\/a><\/li><\/ul>";
 panel +="<\/div><\/div>";
   $.mobile.pageContainer.prepend(panel);
@@ -112,8 +56,18 @@ $(document).bind("mobileinit", function()
      $.mobile.defaultDialogTransition = 'none';
    }
 });
-
 $(document).on("pagecreate","#obyekwisata",function(){
+var ol = window.localStorage.getItem('obyekwisata');
+if (ol === null) {
+$.ajax({
+    url: 'http://panduanwisatadieng.com/?json=get_recent_posts&post_type=wisata&count=30',
+    dataType: 'JSONP',
+    success: function(data, status) {
+        var localData = JSON.stringify(data);
+        window.localStorage.setItem('obyekwisata', localData);
+    }
+});  } else{}
+
 var data = JSON.parse(window.localStorage.getItem('obyekwisata'));
           $.each(data.posts, function(i,posts){
 	    var id=posts.id;
@@ -124,8 +78,8 @@ var data = JSON.parse(window.localStorage.getItem('obyekwisata'));
 
 var poswrap="";
 poswrap += "<a href='#page1"+i+"' class='dblock'><div class='wrapper'>";
-poswrap += "<div class='img_wrapper'>";
-poswrap += "<div class='diengload'><img src='"+thumb+"'\/><\/div>";
+poswrap += "<div class='img_wrapper posrelhid'>";
+poswrap += "<img src='"+thumb+"'\/>";
 poswrap += "<div class='title_wrapper text-center width100'  >";
 poswrap += "<h3 class='dinblock fontn pad10 text-center font90 caps bd-bdtopbot-bdwhite'>"+title+"<\/h3>";
 poswrap += "<\/div>";
@@ -139,22 +93,34 @@ pagewrap += "<a  data-rel='back' class='fwhite curpon mfloleft lnr lnr-arrow-lef
 pagewrap += "<a href='#mypanel' class='fwhite curpon mfloright lnr lnr-menu font200 mrg5'><\/a><\/div>";
 pagewrap += "<div data-role='main' class='pad0'>";
 pagewrap += "<div class='img_wrapper posrelhid'>";
-pagewrap += "<div class='diengload'><img src='"+thumb+"'\/><\/div><div class='absbot'>";
+pagewrap += "<img src='"+thumb+"'\/><div class='absbot'>";
 pagewrap += "<a onclick=\"window.plugins.socialsharing.share('"+excerpt+"', '"+title+"', '"+thumb+"', '')\" class='pad10 font120 floleft fyellow lnr lnr-location' ><\/a>";
 pagewrap += "<a  class='pad10 font120 floright fyellow lnr lnr-picture' ><\/a>";
 pagewrap += "<\/div><\/div>";
-pagewrap += "<div class='pad10 font80 fgrey'><h1 class='judul dinblock font120 fontn'>"+title+"<\/h1><p>"+content+"</p><\/div>";
+pagewrap += "<div class='pad10 font80 fgrey'><h1 class='judul dinblock font120 fontn'>"+title+"<\/h1><p>"+excerpt+"</p><\/div>";
 pagewrap += "<br\/><br\/><br\/><\/div>";
 pagewrap += "<\/div>";
 
 $('#data').append(poswrap);
 $('#obyekwisata').after(pagewrap);
-                })
-  });
+
+  });  });
 
 
 
 $(document).on("pagecreate","#hotel",function(){
+var hl = window.localStorage.getItem('hotel');
+if (hl === null) {
+$.ajax({
+    url: 'http://panduanwisatadieng.com/?json=get_recent_posts&post_type=hotel&count=30',
+    dataType: 'JSONP',
+    success: function(hdata, status) {
+        var datahotel = JSON.stringify(hdata);
+        window.localStorage.setItem('hotel', datahotel);
+
+    },error: function() { }
+}); } else{}
+
 var hdata = JSON.parse(window.localStorage.getItem('hotel'));
 $.each(hdata.posts, function(i,hposts){
 	    var hid=hposts.id;
@@ -165,9 +131,9 @@ $.each(hdata.posts, function(i,hposts){
 
 var hotelwrap="";
 hotelwrap += "<a href='#page1"+hid+"' class='dblock'><div class='wrapper'>";
-hotelwrap += "<div class='img_wrapper bblack'><div class='diengload'>";
+hotelwrap += "<div class='img_wrapper posrelhid'>";
 hotelwrap += "<img src='"+imghotel+"'\/>";
-hotelwrap += "<\/div><div class='title_wrapper text-center width100'  >";
+hotelwrap += "<div class='title_wrapper text-center width100'  >";
 hotelwrap += "<h3 class='dinblock fontn pad10 text-center font100 caps bd-bdtopbot-bdwhite'>"+htitle+"<\/h3>";
 hotelwrap += "<\/div>";
 hotelwrap += "<\/div>";
@@ -179,7 +145,7 @@ hpagewrap += "<div id='header' class='fwhite text-center'>";
 hpagewrap += "<a  data-rel='back' class='fwhite curpon mfloleft lnr lnr-arrow-left font200 mrg5'><\/a>";
 hpagewrap += "<a href='#mypanel' class='fwhite curpon mfloright lnr lnr-menu font200 mrg5'><\/a><\/div>";
 hpagewrap += "<div data-role='main' class='pad0'>";
-hpagewrap += "<div class='img_wrapper'>";
+hpagewrap += "<div class='img_wrapper posrelhid'>";
 hpagewrap += "<img src='"+imghotel+"'\/>";
 hpagewrap += "<\/div>";
 hpagewrap += "<div class='pad10 font80 fgrey'><h1 class='judul dinblock font120 fontn'>"+htitle+"<\/h1><p>"+hcontent+"</p><\/div>";

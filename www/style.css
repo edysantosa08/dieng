@@ -745,7 +745,7 @@ img {vertical-align:middle;text-align:center}
 .wrapper{margin:0px;background:#fff;overflow:hidden;position:relative;min-height:200px}
 .title_wrapper{position:absolute;bottom:20px;color:#fff}
 .des_wrapper{padding:10px;color:#888;}
-.img_wrapper{background:#000;overflow:hidden;position:relative;text-align:center;font-size:120%;}
+.img_wrapper{background:#ccc url('diengload.gif')no-repeat center center; background-size:30px 30px;min-height:300px;overflow:hidden;position:relative;text-align:center;font-size:120%;}
 .img_wrapper img{width:100%;height:auto;}
 
 .backbut {
@@ -784,6 +784,5 @@ img {vertical-align:middle;text-align:center}
 }
 .received {display:none}
 .absbot[position:absolute;bottom:3px]
-.diengload{background:#ccc url('diengload.gif')no-repeat center center; background-size:30px 30px;min-height:300px;width:100%}
 .topfix{position:fixed;top:0;width:100%;z-index:998}
 #header{border:0!important;font-size:inherit!important;background:transparent!important;position:fixed;top:0px;width:100%;z-index:999}
